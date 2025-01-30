@@ -17,8 +17,8 @@ services:
     ports:
       - '3000:3000'
     environment:
-      ANON_KEY: your-anon-key
-      SERVICE_ROLE_KEY: your-service-role-key
+      ANON_KEY: ${ANON_KEY}
+      SERVICE_ROLE_KEY: ${SERVICE_ROLE_KEY}
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
 
   supabase-auth:
@@ -28,7 +28,7 @@ services:
       - '9999:9999'
     environment:
       GOTRUE_API_HOST: 0.0.0.0
-      GOTRUE_JWT_SECRET: your-jwt-secret
+      GOTRUE_JWT_SECRET: ${JWT_SECRET}
       GOTRUE_DB_DRIVER: postgres
       GOTRUE_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
       GOTRUE_SITE_URL: http://localhost:3000
@@ -45,7 +45,7 @@ services:
       DB_PASSWORD: postgres
       DB_PORT: 5432
       PORT: 4000
-      SECRET_KEY_BASE: your-secret-key-base
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
 
 volumes:
   postgres-data:
